@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Question; // El modelo para almacenar las preguntas en la base de datos
-use App\Models\Search; // El modelo para almacenar las búsquedas
+use App\Models\Search; // El modelo para almacenar las búsquedas¡
+use Carbon\Carbon;
 
 class StackOverflowController extends Controller
 {
@@ -29,12 +30,21 @@ class StackOverflowController extends Controller
      */
     public function getQuestions(Request $request)
     {
-        // Validación de los filtros de entrada
-        $request->validate([
+         // Validación de los filtros de entrada con control de errores
+        $validator = \Validator::make($request->all(), [
             'tagged' => 'required|string',
             'todate' => 'nullable|date',
             'fromdate' => 'nullable|date',
         ]);
+
+        // Si la validación falla, devolver un error en formato JSON
+        if ($validator->fails()) {
+            // return response()->json(['errors' => $validator->errors()], 400); // 400 Bad Request
+            return response()->json([
+                'message' => $validator->errors(),
+                'questions' => []
+            ],400);
+        }
 
         //vinculamos parametros a variables para la busqueda aplicando un "no-data" para facilitar las búsquedas futuras en nuestra bdd
         $param_todate = $request->todate ? strtotime($request->todate) : 'no-data';
@@ -49,7 +59,10 @@ class StackOverflowController extends Controller
         ];
 
         // Verifica si la búsqueda ya existe en la base de datos
-        $search = Search::where('busqueda', $request->tagged."|".$param_todate."|".$param_fromdate)->first();
+        $search = Search::where('busqueda_tagged', $request->tagged)
+                ->where('busqueda_todate',$param_todate)
+                ->where('busqueda_fromdate',$param_fromdate)
+                ->first();
 
         if ($search) {
             // Si la búsqueda ya existe, incrementa el contador
@@ -80,7 +93,9 @@ class StackOverflowController extends Controller
         } else {
             // Si no existe, guarda la nueva búsqueda
             Search::create([
-                'busqueda' => $request->tagged."|".$param_todate."|".$param_fromdate,
+                'busqueda_tagged' => $request->tagged,
+                'busqueda_todate'=> $param_todate,
+                'busqueda_fromdate'=> $param_fromdate,
                 'contador' => 1,
             ]);
 
@@ -109,6 +124,9 @@ class StackOverflowController extends Controller
             }
         }
 
-        return response()->json(['error' => 'Failed to fetch data from Stack Overflow'], 500);
+        return response()->json([
+            'message' => 'Failed to fetch data from Stack Overflow',
+            'questions' => []
+        ],500);
     }
 }

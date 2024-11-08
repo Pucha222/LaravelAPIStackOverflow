@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('searches', function (Blueprint $table) {
             $table->id(); // ID autoincrementable
-            $table->string('busqueda'); // Campo tipo texto para la búsqueda
+            $table->string('busqueda_tagged'); // Campo tipo texto para la búsqueda
+            $table->string('busqueda_fromdate'); // Campo tipo texto para la búsqueda
+            $table->string('busqueda_todate'); // Campo tipo texto para la búsqueda
             $table->integer('contador')->default(0); // Campo tipo numérico para el contador, con valor por defecto 0
             $table->timestamps(); // Campos created_at y updated_at
         });

@@ -72,6 +72,9 @@ Puedes probar el endpoint de forma cómoda desde POSTMAN con este ejemplo:
 
 http://127.0.0.1:8000/api/questions?tagged=php&fromdate=2024-01-01&todate=2024-12-31
 
+Cada parámetro de la búsqueda permite filtrar según se desee. Puedes modificar estos parámetros para realizar diferentes búsquedas y visualizar en el front-end los datos recuperados.<br> 
+Si quieres ver que búsquedas son más comunes, puedes mirar el campo "contador" de la tabla searches.<br> Este campo te dice cuantas búsquedas se han realizado de esa en concreto. Pensado para hacer una estadística de que se busca más.
+
 ## 2. Detalles de la estructura de la base de datos
 ### Tabla questions: Almacena las preguntas obtenidas de la API de Stack Overflow.
     question_id: ID único de la pregunta en Stack Overflow.

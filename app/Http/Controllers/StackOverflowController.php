@@ -8,6 +8,23 @@ use App\Models\Search; // El modelo para almacenar las búsquedas
 
 class StackOverflowController extends Controller
 {
+    /**
+     *
+     * @name: getQuestions
+     * @author: Pol Pujadó
+     * @description: Función que llamaremos via API que recoge la búsqueda pasada
+     *              por parámetros en la Request, la identifica y si existe realiza una query
+     *              en la base de datos y si no existe genera una petición API
+     *              contra Stackoverflow para recoger los datos solicitados.
+     * @version: 2
+     * @comments:
+     *      -En la versión 1 implemento la petición API contra Stackoverflowç
+     *      -En la versión 2 implemento el almacenamiento de búsquedas para optimizar las siguientes peticiones.
+     * @param: Request $request
+     * @url: /api/questions?tagged=php&fromdate=2021-01-01&todate=2024-12-30 (example)
+     * @date: 2024-11-08
+     *
+     */
     public function getQuestions(Request $request)
     {
         // Validación de los filtros de entrada
@@ -17,7 +34,7 @@ class StackOverflowController extends Controller
             'fromdate' => 'nullable|date',
         ]);
 
-        //vinculamos parametros a variables para la busqueda
+        //vinculamos parametros a variables para la busqueda aplicando un "no-data" para facilitar las búsquedas futuras en nuestra bdd
         $param_todate = $request->todate ? strtotime($request->todate) : 'no-data';
         $param_fromdate = $request->fromdate ? strtotime($request->fromdate) : 'no-data';
 

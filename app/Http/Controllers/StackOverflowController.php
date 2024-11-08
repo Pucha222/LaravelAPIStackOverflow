@@ -12,6 +12,7 @@ class StackOverflowController extends Controller
      *
      * @name: getQuestions
      * @author: Pol Pujadó
+     *
      * @description: Función que llamaremos via API que recoge la búsqueda pasada
      *              por parámetros en la Request, la identifica y si existe realiza una query
      *              en la base de datos y si no existe genera una petición API
@@ -20,6 +21,7 @@ class StackOverflowController extends Controller
      * @comments:
      *      -En la versión 1 implemento la petición API contra Stackoverflowç
      *      -En la versión 2 implemento el almacenamiento de búsquedas para optimizar las siguientes peticiones.
+     *
      * @param: Request $request
      * @url: /api/questions?tagged=php&fromdate=2021-01-01&todate=2024-12-30 (example)
      * @date: 2024-11-08

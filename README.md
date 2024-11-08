@@ -85,5 +85,5 @@ http://127.0.0.1:8000/api/questions?tagged=php&fromdate=2024-01-01&todate=2024-1
     contador: Número de veces que se ha realizado esta búsqueda.
 
 ## 3. Notas
--Si no encuentras preguntas en la base de datos, el sistema hará una llamada a la API de Stack Overflow y almacenará los resultados.
+-Si no encuentras preguntas en la base de datos, el sistema hará una llamada a la API de Stack Overflow y almacenará los resultados.<br>
 -Las búsquedas realizadas se guardan en la tabla searches para optimizar el proceso y evitar hacer peticiones innecesarias a la API.

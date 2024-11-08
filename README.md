@@ -24,6 +24,7 @@ Ejecuta los siguientes comandos en el directorio de tu repositorio clonado en /h
 ```bash
 composer install
 ```
+Crea tu .env
 ```bash
 cp .env.example .env
 ```
@@ -31,7 +32,7 @@ cp .env.example .env
 Una vez tengas tu .env deberàs crear tu base de datos en PhpMyAdmin local y configurar los parametros de esta en tu fichero. 
 No pongas ninguna contraseña ni username. Solamente el nombre.
 
-```bash
+```env
 
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -42,3 +43,28 @@ DB_PASSWORD=
 
 ```
 
+Genera la key en tu .env
+```bash
+php artisan key:generate
+```
+
+Despliega el servicio
+```bash
+php artisan serve
+```
+
+Puedes probar la petición desde POSTMAN con este ejemplo:
+
+http://127.0.0.1:8000/questions?tagged=php&fromdate=2024-01-01&todate=2024-12-31
+
+### 2. Detalles de la estructura de la base de datos
+Tabla questions: Almacena las preguntas obtenidas de la API de Stack Overflow.
+    question_id: ID único de la pregunta en Stack Overflow.
+    title: Título de la pregunta.
+    link: Enlace directo a la pregunta.
+    tags: Etiquetas asociadas a la pregunta.
+    creation_date: Fecha de creación de la pregunta.
+
+Tabla searches: Almacena las búsquedas realizadas para evitar solicitudes repetidas a la API.
+    busqueda: Filtros de búsqueda concatenados (por ejemplo, etiqueta, fechas).
+    contador: Número de veces que se ha realizado esta búsqueda.

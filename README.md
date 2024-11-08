@@ -87,7 +87,9 @@ Si quieres ver que búsquedas son más comunes, puedes mirar el campo "contador"
     creation_date: Fecha de creación de la pregunta.
 
 ### Tabla searches: Almacena las búsquedas realizadas para evitar solicitudes repetidas a la API.
-    busqueda: Filtros de búsqueda concatenados (por ejemplo, etiqueta, fechas).
+    busqueda_tagged: Filtros de búsqueda.
+    busqueda_fromdate: Filtros de búsqueda.
+    busqueda_todate: Filtros de búsqueda.
     contador: Número de veces que se ha realizado esta búsqueda.
 
 ## 3. Notas

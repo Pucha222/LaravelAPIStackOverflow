@@ -39,11 +39,10 @@ class StackOverflowController extends Controller
 
         // Si la validación falla, devolver un error en formato JSON
         if ($validator->fails()) {
-            // return response()->json(['errors' => $validator->errors()], 400); // 400 Bad Request
             return response()->json([
                 'message' => $validator->errors(),
                 'questions' => []
-            ],400);
+            ],400); //400 bad request
         }
 
         //vinculamos parametros a variables para la busqueda aplicando un "no-data" para facilitar las búsquedas futuras en nuestra bdd
@@ -127,6 +126,6 @@ class StackOverflowController extends Controller
         return response()->json([
             'message' => 'Failed to fetch data from Stack Overflow',
             'questions' => []
-        ],500);
+        ],500); //Error de la API
     }
 }

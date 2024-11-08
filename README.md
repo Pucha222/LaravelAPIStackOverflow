@@ -89,4 +89,11 @@ Si quieres ver que búsquedas son más comunes, puedes mirar el campo "contador"
 
 ## 3. Notas
 -Si no encuentras preguntas en la base de datos, el sistema hará una llamada a la API de Stack Overflow y almacenará los resultados.<br>
--Las búsquedas realizadas se guardan en la tabla searches para optimizar el proceso y evitar hacer peticiones innecesarias a la API.
+-Las búsquedas realizadas se guardan en la tabla searches para optimizar el proceso y evitar hacer peticiones innecesarias a la API.<br>
+-Código de la lógica de la petición a Stackoverflow en StackOverflowController.php
+
+
+<br><br><br>
+Pol Pujadó
+<br>
+2024-11-08

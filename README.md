@@ -1,6 +1,6 @@
 # Integración API de Stack Overflow
 
-Este proyecto es una integración de Laravel + StackOverflow que conecta con su API pública para obtener preguntas basadas en etiquetas y fechas. El endpoint de API própio permite extraer datos de su servidor.
+Este proyecto es una integración de Laravel + StackOverflow que conecta con su API pública para obtener preguntas basadas en etiquetas y fechas. El endpoint própio permite extraer datos tanto de su servidor, como del propio (base de datos local).
 <br>
 Los datos obtenidos a través de las peticiones contra el endpoint se almacenan en una base de datos local que permite realizar búsquedas con filtros para evitar nuevas solicitudes a la API cuando ya se han realizado previamente.
 

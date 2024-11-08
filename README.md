@@ -22,7 +22,7 @@ Para acceder a este puedes ir directamente a la url "/" de tu apache local desde
 https://github.com/Pucha222/LaravelAPIStackOverflow
 
 #### Ejecuta comandos
-Ejecuta los siguientes comandos en el directorio de tu repositorio clonado en /htdocs/ si es que estas utlizando XAMPP.
+Ejecuta los siguientes comandos en el directorio de tu repositorio clonado en /htdocs/ (si es que estas utlizando XAMPP) o otro, si usas otro método de creación de servidor local.
 ```bash
 composer install
 ```

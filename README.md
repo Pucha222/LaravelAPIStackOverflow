@@ -13,9 +13,7 @@ Para acceder a este puedes ir directamente a la url "/" de tu apache local desde
 - MySQL (viene con XAMPP)
 - Laravel 11
 
-## Instalación
-
-### 1. Clonación del repositorio (Instal·lación con XAMPP)
+## 1. Instalación
 
 Clona el repositorio desde GitHub:
 https://github.com/Pucha222/LaravelAPIStackOverflow
@@ -29,9 +27,8 @@ Crea tu .env
 cp .env.example .env
 ```
 
-Una vez tengas tu .env deberàs crear tu base de datos en PhpMyAdmin local y configurar los parametros de esta en tu fichero. 
+Configurar los parametros de la base de datos en tu fichero. La crearemos en el próximo paso. Recuerda el nombre que le has puesto. 
 No pongas ninguna contraseña ni username. Solamente el nombre.
-
 ```env
 
 DB_CONNECTION=mysql
@@ -43,28 +40,45 @@ DB_PASSWORD=
 
 ```
 
+Configuración de XAMPP
+Si estás usando XAMPP, asegúrate de tener MySQL corriendo. Puedes verificarlo desde el panel de control de XAMPP.
+
+Inicia Apache y MySQL.
+Abre http://localhost/phpmyadmin/ en tu navegador y crea una base de datos con el nombre que configuraste en el archivo .env.
+
 Genera la key en tu .env
 ```bash
 php artisan key:generate
 ```
 
+Genera las tablas
+```bash
+php artisan migrate
+```
+Esto creará las tablas questions y searches en tu base de datos, las cuales almacenan las preguntas obtenidas de la API y las búsquedas realizadas.
+
 Despliega el servicio
 ```bash
 php artisan serve
 ```
+Por defecto, el servidor estará disponible en http://127.0.0.1:8000.
 
-Puedes probar la petición desde POSTMAN con este ejemplo:
+Puedes probar el endpoint de forma cómoda desde POSTMAN con este ejemplo:
 
-http://127.0.0.1:8000/questions?tagged=php&fromdate=2024-01-01&todate=2024-12-31
+http://127.0.0.1:8000/api/questions?tagged=php&fromdate=2024-01-01&todate=2024-12-31
 
-### 2. Detalles de la estructura de la base de datos
-#### Tabla questions: Almacena las preguntas obtenidas de la API de Stack Overflow.
+## 2. Detalles de la estructura de la base de datos
+### Tabla questions: Almacena las preguntas obtenidas de la API de Stack Overflow.
     question_id: ID único de la pregunta en Stack Overflow.
     title: Título de la pregunta.
     link: Enlace directo a la pregunta.
     tags: Etiquetas asociadas a la pregunta.
     creation_date: Fecha de creación de la pregunta.
 
-#### Tabla searches: Almacena las búsquedas realizadas para evitar solicitudes repetidas a la API.
+### Tabla searches: Almacena las búsquedas realizadas para evitar solicitudes repetidas a la API.
     busqueda: Filtros de búsqueda concatenados (por ejemplo, etiqueta, fechas).
     contador: Número de veces que se ha realizado esta búsqueda.
+
+## 3. Notas
+-Si no encuentras preguntas en la base de datos, el sistema hará una llamada a la API de Stack Overflow y almacenará los resultados.
+-Las búsquedas realizadas se guardan en la tabla searches para optimizar el proceso y evitar hacer peticiones innecesarias a la API.

@@ -58,13 +58,13 @@ Puedes probar la petición desde POSTMAN con este ejemplo:
 http://127.0.0.1:8000/questions?tagged=php&fromdate=2024-01-01&todate=2024-12-31
 
 ### 2. Detalles de la estructura de la base de datos
-Tabla questions: Almacena las preguntas obtenidas de la API de Stack Overflow.
+## Tabla questions: Almacena las preguntas obtenidas de la API de Stack Overflow.
     question_id: ID único de la pregunta en Stack Overflow.
     title: Título de la pregunta.
     link: Enlace directo a la pregunta.
     tags: Etiquetas asociadas a la pregunta.
     creation_date: Fecha de creación de la pregunta.
 
-Tabla searches: Almacena las búsquedas realizadas para evitar solicitudes repetidas a la API.
+## Tabla searches: Almacena las búsquedas realizadas para evitar solicitudes repetidas a la API.
     busqueda: Filtros de búsqueda concatenados (por ejemplo, etiqueta, fechas).
     contador: Número de veces que se ha realizado esta búsqueda.

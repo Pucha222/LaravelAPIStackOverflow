@@ -7,7 +7,7 @@
         <h1>Listado de Preguntas</h1>
 
         <!-- Botón para actualizar preguntas -->
-        <a href="{{ route('questions.api.update') }}" class="btn btn-primary mb-3">Actualizar Preguntas</a>
+        <a href="{{ route('questions.api.update') }}" class="btn btn-primary mb-3">Actualizar Preguntas via API</a>
 
         @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>

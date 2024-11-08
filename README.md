@@ -15,10 +15,30 @@ Para acceder a este puedes ir directamente a la url "/" de tu apache local desde
 
 ## Instalación
 
-### 1. Clonación del repositorio
+### 1. Clonación del repositorio (Instal·lación con XAMPP)
 
 Clona el repositorio desde GitHub:
+https://github.com/Pucha222/LaravelAPIStackOverflow
+
+Ejecuta los siguientes comandos en el directorio de tu repositorio clonado en /htdocs/
+```bash
+composer install
+```
+```bash
+cp .env.example .env
+```
+
+Una vez tengas tu .env deberàs crear tu base de datos en PhpMyAdmin local y configurar los parametros de esta en tu fichero. 
+No pongas ninguna contraseña ni username. Solamente el nombre.
 
 ```bash
-git clone https://github.com/tu_usuario/tu_repositorio.git
-cd tu_repositorio
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=aqui_va_el_nombre_de_tu_base_de_datos
+DB_USERNAME=root
+DB_PASSWORD=
+
+```
+

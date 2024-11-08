@@ -15,9 +15,10 @@ Para acceder a este puedes ir directamente a la url "/" de tu apache local desde
 
 ## 1. Instalación
 
-Clona el repositorio desde GitHub:
+#### Clona el repositorio desde GitHub:
 https://github.com/Pucha222/LaravelAPIStackOverflow
 
+#### Ejecuta comandos
 Ejecuta los siguientes comandos en el directorio de tu repositorio clonado en /htdocs/
 ```bash
 composer install
@@ -27,6 +28,7 @@ Crea tu .env
 cp .env.example .env
 ```
 
+#### Configuración de base de datos
 Configurar los parametros de la base de datos en tu fichero. La crearemos en el próximo paso. Recuerda el nombre que le has puesto. 
 No pongas ninguna contraseña ni username. Solamente el nombre.
 ```env
@@ -40,12 +42,13 @@ DB_PASSWORD=
 
 ```
 
-Configuración de XAMPP
+#### Configuración de XAMPP
 Si estás usando XAMPP, asegúrate de tener MySQL corriendo. Puedes verificarlo desde el panel de control de XAMPP.
 
 Inicia Apache y MySQL.
 Abre http://localhost/phpmyadmin/ en tu navegador y crea una base de datos con el nombre que configuraste en el archivo .env.
 
+#### Ejecuta comandos artisan de Laravel
 Genera la key en tu .env
 ```bash
 php artisan key:generate
@@ -61,6 +64,8 @@ Despliega el servicio
 ```bash
 php artisan serve
 ```
+
+#### Información extra
 Por defecto, el servidor estará disponible en http://127.0.0.1:8000.
 
 Puedes probar el endpoint de forma cómoda desde POSTMAN con este ejemplo:
